@@ -1,0 +1,23 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        //[a,b,c] s = cab, t = bac
+        //[a = 0, b = 0, c = 0]
+        //[a = 0, b = 0, c = 0] = return true
+        int[] arr = new int[26];    
+        if (s.length() != t.length()) {
+            return false;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            arr[s.charAt(i) - 'a']++ ;//arr[c] + 1
+            arr[t.charAt(i) - 'a']--;
+        }
+
+        for (int num : arr) {
+            if (num != 0) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+}
